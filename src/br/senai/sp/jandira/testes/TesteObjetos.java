@@ -11,7 +11,23 @@ public class TesteObjetos {
 
     public static void main(String[] args) {
 
+        int[][] c = {
+            {4,6,5}, 
+            {5,9,7}, 
+            {1,13,3}, 
+            {5,5,8}
+        };
+        System.out.println(c[2][1]);
         
+        
+        String[][] quitanda = {
+            {"Banana", "Maçã", "Uva", "Morango"},
+            {"Alface", "Couve", "Pepino", "Salsinha", "Pimentão", "Brocólis"},
+            {"Abacate", "Tomate", "Jiló", "Abobrinha"}
+        };
+        System.out.println(quitanda[1][4]);
+        
+        System.out.println("******************************");
         
         Especialidade especialidade1 = new Especialidade("Cardiologia");
         // especialidade1.setNome("Cardiologia");
