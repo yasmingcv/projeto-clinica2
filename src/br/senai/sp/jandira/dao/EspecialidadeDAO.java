@@ -2,12 +2,14 @@ package br.senai.sp.jandira.dao;
 
 import br.senai.sp.jandira.model.Especialidade;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class EspecialidadeDAO {
 
     /*
     
-    Essa classe será responsável pela persistência de dados das especialidades, por exemplo: adicionar, excluir etc.
+    Essa classe será responsável pela persistência de dados das especialidades, 
+    por exemplo: adicionar, excluir etc.
     
     */
 
@@ -61,6 +63,26 @@ public class EspecialidadeDAO {
         especialidades.add(e3);
         especialidades.add(e4);
                 
+    }
+    
+    public static DefaultTableModel getTabelaEspecialidades(){
+          
+        System.out.println("Montando DFTBM " + especialidades.size());
+        
+        String[] titulo = {"CÓDIGO", "NOME DA ESPECIALIDADE", "DESCRIÇÃO"};
+        String [][] dados = new String[especialidades.size()][3];
+        
+        
+        for(Especialidade e : especialidades){
+            int i = especialidades.indexOf(e);
+            dados[i][0] = e.getCodigo().toString();
+            dados[i][1] = e.getNome();
+            dados[i][2] = e.getDescricao();
+        }
+        
+        
+        return new DefaultTableModel(dados, titulo);
+        
     }
     
 }
