@@ -67,7 +67,6 @@ public class EspecialidadeDAO {
     
     public static DefaultTableModel getTabelaEspecialidades(){
           
-        System.out.println("Montando DFTBM " + especialidades.size());
         
         String[] titulo = {"CÓDIGO", "NOME DA ESPECIALIDADE", "DESCRIÇÃO"};
         String [][] dados = new String[especialidades.size()][3];
