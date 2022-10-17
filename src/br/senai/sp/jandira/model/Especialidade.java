@@ -13,23 +13,25 @@ public class Especialidade {
     // Construtor da classe
     public Especialidade(String nome) {
         this.nome = nome;
-        this.contador++;
-        this.codigo = contador;
+        gerarCodigo();
     }
 
     public Especialidade(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.contador++;
-        this.codigo = contador;
+        gerarCodigo();
 
     }
 
     public Especialidade() { //Construtor defaut
+        gerarCodigo();
+    }
+    
+    private void gerarCodigo(){
         this.contador++;
         this.codigo = contador;
-
     }
+    
     // métodos de acesso aos atributos
 
     public void setNome(String nome) {
@@ -46,7 +48,7 @@ public class Especialidade {
     }
 
     public void setDescricao(String descricao) {
-        if (descricao.length() >= 10) {
+        if (descricao.length() >= 3) {
             this.descricao = descricao;
         } else {
             JOptionPane.showMessageDialog(null,
