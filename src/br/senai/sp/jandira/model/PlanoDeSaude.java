@@ -4,58 +4,94 @@ import java.time.LocalDate;
 
 public class PlanoDeSaude {
 
-	// atributos
-	private String operadora;
-	private String categoria;
-	private String numero;
-	private LocalDate validade;
-	private static int quantidade;
-	
-	//metodos construtores
-	public PlanoDeSaude(String operadora) {
-		this.operadora = operadora;
-		this.quantidade++;
+    // atributos
+    private String operadora;
+    private String categoria;
+    private String numero;
+    private LocalDate validade;
+    
+    private static int contador = 99;
+    private Integer codigoP;
 
-	}
-	
-	public PlanoDeSaude() {
-		this.quantidade++;
-	}
-	
-	// metodos
-	public void setOperadora(String operadora) {
-		this.operadora = operadora;
-	}
+    //
+    
+    private void gerarCodigo() {
+        this.contador++;
+        this.codigoP = contador;
+    }
+    //metodos construtores
+    
+    public PlanoDeSaude() { //DEFAULT
+        gerarCodigo();
+    }
+    
+    
+    public PlanoDeSaude(String operadora) {
+        this.operadora = operadora;
+        gerarCodigo();
 
-	public String getOperadora() {
-		return operadora;
-	}
+    }
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+    public PlanoDeSaude(String operadora, String categoria, String numero, LocalDate validade) {
+        this.operadora = operadora;
+        this.categoria = categoria;
+        this.numero = numero;
+        this.validade = validade;
+        gerarCodigo();
+    }
 
-	public String getCategoria() {
-		return categoria;
-	}
+    // metodos
+    public void setOperadora(String operadora) {
+        this.operadora = operadora;
+    }
 
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
+    public String getOperadora() {
+        return operadora;
+    }
 
-	public String getNumero() {
-		return numero;
-	}
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
-	public void setValidade(LocalDate validade) {
-		this.validade = validade;
-	}
+    public String getCategoria() {
+        return categoria;
+    }
 
-	public LocalDate getValidade() {
-		return validade;
-	}
-	
-	public static int getQuantidade() {
-		return quantidade;
-	}
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setValidade(LocalDate validade) {
+        this.validade = validade;
+    }
+
+    public LocalDate getValidade() {
+        return validade;
+    }
+
+    public static int getQuantidade() {
+        return contador;
+    }
+
+    public Integer getCodigoP() {
+        return codigoP;
+    }
+
+    public void setCodigoP(Integer codigoP) {
+        this.codigoP = codigoP;
+    }
+
+    public static int getContador() {
+        return contador;
+    }
+
+    public static void setContador(int contador) {
+        PlanoDeSaude.contador = contador;
+    }
+    
+    
 }

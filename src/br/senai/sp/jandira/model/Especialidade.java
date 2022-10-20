@@ -23,7 +23,7 @@ public class Especialidade {
 
     }
 
-    public Especialidade() { //Construtor defaut
+    public Especialidade() { //Construtor default
         gerarCodigo();
     }
     

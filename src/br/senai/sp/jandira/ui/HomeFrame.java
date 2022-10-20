@@ -4,8 +4,9 @@
  */
 package br.senai.sp.jandira.ui;
 
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
+
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 public class HomeFrame extends javax.swing.JFrame {
 
@@ -19,6 +20,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
     //Atributos da classe:
     PanelEspecialidades panelEspecialidades;
+    PanelPlanosDeSaude panelPlanosDeSaude;
 
     //Constantes:
     private final int POS_X = 30;
@@ -208,11 +210,14 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         panelEspecialidades.setVisible(false);
+        panelPlanosDeSaude.setVisible(false);
         panelHome.setVisible(true);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
-        // TODO add your handling code here:
+        panelHome.setVisible(false);
+        panelEspecialidades.setVisible(false);
+        panelPlanosDeSaude.setVisible(true);
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
     private void buttonAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendaActionPerformed
@@ -229,14 +234,16 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
 
-
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
 
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
-        // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja sair?");
+        if(a == 0 ){
+            dispose();
+        }
     }//GEN-LAST:event_buttonSairActionPerformed
 
 
@@ -262,6 +269,8 @@ public class HomeFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void initPanels() {
+        
+        
         panelEspecialidades = new PanelEspecialidades();
         panelEspecialidades.setBounds(
                 POS_X,
@@ -271,6 +280,21 @@ public class HomeFrame extends javax.swing.JFrame {
 
         getContentPane().add(panelEspecialidades);
         panelEspecialidades.setVisible(false);
+        
+        
+        // 
+        
+        
+        panelPlanosDeSaude = new PanelPlanosDeSaude();
+        panelPlanosDeSaude.setBounds(
+                POS_X, 
+                POS_Y, 
+                LARGURA, 
+                ALTURA);
+        
+        getContentPane().add(panelPlanosDeSaude);
+        panelPlanosDeSaude.setVisible(false);
+                
     }
 
 }
