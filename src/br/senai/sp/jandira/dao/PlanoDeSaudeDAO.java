@@ -20,7 +20,7 @@ public class PlanoDeSaudeDAO {
 
     public static PlanoDeSaude getPlanoDeSaude(Integer codigoP) { //READ
         for (PlanoDeSaude p : planosDeSaude) {
-            if (p.getCodigoP() == codigoP) {
+            if (p.getCodigo() == codigoP) {
                 return p;
             }
         }
@@ -29,7 +29,7 @@ public class PlanoDeSaudeDAO {
 
     public static void atualizar(PlanoDeSaude planoDeSaudeAtualizado) { //UPDATE
         for (PlanoDeSaude p : planosDeSaude) {
-            if (p.getCodigoP() == planoDeSaudeAtualizado.getCodigoP()) {
+            if (p.getCodigo() == planoDeSaudeAtualizado.getCodigo()) {
                 planosDeSaude.set(planosDeSaude.indexOf(p), planoDeSaudeAtualizado);
                 break;
             }
@@ -38,7 +38,7 @@ public class PlanoDeSaudeDAO {
 
     public static void excluir(Integer codigoP) {
         for (PlanoDeSaude p : planosDeSaude) {
-            if (p.getCodigoP() == codigoP) {
+            if (p.getCodigo() == codigoP) {
                 planosDeSaude.remove(p);
                 break;
             }
@@ -46,11 +46,11 @@ public class PlanoDeSaudeDAO {
     }
 
     // criar lista inicial de planos de saúde
-    public void criarListaDePlanosDeSaude() {
+    public static void criarListaDePlanosDeSaude() {
         PlanoDeSaude p1 = new PlanoDeSaude("Bradesco", "Gold", "177-123", LocalDate.of(2025, Month.MARCH, 25));
-        PlanoDeSaude p2 = new PlanoDeSaude("Bradesco", "Gold", "177-123", LocalDate.of(2026, Month.JANUARY, 17));
-        PlanoDeSaude p3 = new PlanoDeSaude("Bradesco", "Gold", "177-123", LocalDate.of(2027, Month.MAY, 22));
-        PlanoDeSaude p4 = new PlanoDeSaude("Bradesco", "Gold", "177-123", LocalDate.of(2028, Month.JULY, 13));
+        PlanoDeSaude p2 = new PlanoDeSaude("Intermédica", "Bronze", "217-123", LocalDate.of(2026, Month.JANUARY, 17));
+        PlanoDeSaude p3 = new PlanoDeSaude("Amil", "Prata", "547-133", LocalDate.of(2027, Month.MAY, 22));
+        PlanoDeSaude p4 = new PlanoDeSaude("Unimed", "Gold", "817-923", LocalDate.of(2028, Month.JULY, 13));
 
         planosDeSaude.add(p1);
         planosDeSaude.add(p2);
@@ -65,7 +65,7 @@ public class PlanoDeSaudeDAO {
 
         for (PlanoDeSaude p : planosDeSaude) {
             int i = planosDeSaude.indexOf(p);
-            dados[i][0] = p.getCodigoP().toString();
+            dados[i][0] = p.getCodigo().toString();
             dados[i][1] = p.getOperadora();
             dados[i][2] = p.getCategoria();
             dados[i][3] = p.getNumero();

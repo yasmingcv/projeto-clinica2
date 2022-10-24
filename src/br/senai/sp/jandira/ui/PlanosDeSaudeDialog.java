@@ -1,6 +1,5 @@
 package br.senai.sp.jandira.ui;
 
-import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import br.senai.sp.jandira.model.PlanoDeSaude;
@@ -14,7 +13,7 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
     private OperacaoEnum operacao;
     
     
-    public PlanosDeSaudeDialog(
+    public PlanosDeSaudeDialog( //add
             java.awt.Frame parent, 
             boolean modal,
             OperacaoEnum operacao) 
@@ -24,24 +23,29 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         this.operacao = operacao;
     }
     
-    public PlanosDeSaudeDialog(
+    
+    
+    public PlanosDeSaudeDialog( //editar
             java.awt.Frame parent, 
             boolean modal,
-            PlanoDeSaude plano,
+            PlanoDeSaude plano,             
             OperacaoEnum operacao) 
     {
         super(parent, modal);
         initComponents();
         this.operacao = operacao;
+        this.planoDeSaude = plano;
+        preencherFormulario();
     }
     
-    private void preencherFormulario(){
-        
+    private void preencherFormulario(){               
+        textFieldCodigo.setText(planoDeSaude.getCodigo().toString());
+        textFieldOperadora.setText(planoDeSaude.getOperadora());
+        textFieldCategoria.setText(planoDeSaude.getCategoria());
+        textFieldNumero.setText(planoDeSaude.getNumero());
+        textFieldValidade.setText(planoDeSaude.getValidade().toString());
     }
     
-    
-
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -189,19 +193,23 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-
         if (operacao == OperacaoEnum.ADICIONAR) {
             adicionar();
+        }else{
+            editar();
         }
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     
     private void adicionar(){
+        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
         PlanoDeSaude novoPlano = new PlanoDeSaude();
         novoPlano.setOperadora(textFieldOperadora.getText());
         novoPlano.setCategoria(textFieldCategoria.getText());
-        novoPlano.setNumero(textFieldNumero.getText());
-       // novoPlano.setValidade(LocalDate.parse(textFieldValidade.getText()));
+        novoPlano.setNumero(textFieldNumero.getText());        
+        novoPlano.setValidade(LocalDate.parse(textFieldValidade.getText(), formato));
         
         PlanoDeSaudeDAO.gravar(novoPlano);
         
@@ -214,6 +222,25 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
         dispose();
     }
    
+    
+    private void editar(){
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+        planoDeSaude.setOperadora(textFieldOperadora.getText());
+        planoDeSaude.setCategoria(textFieldCategoria.getText());
+        planoDeSaude.setNumero(textFieldNumero.getText());
+        planoDeSaude.setValidade(LocalDate.parse(textFieldValidade.getText(), formato));
+        
+        PlanoDeSaudeDAO.gravar(planoDeSaude);
+        
+        JOptionPane.showMessageDialog(
+                this,
+                "Plano de saúde atualizado com sucesso!",
+                "Editar plano de saúde",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        dispose();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCancelar;

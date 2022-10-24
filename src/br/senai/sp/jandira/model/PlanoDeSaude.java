@@ -11,13 +11,13 @@ public class PlanoDeSaude {
     private LocalDate validade;
     
     private static int contador = 99;
-    private Integer codigoP;
+    private Integer codigo;
 
     //
     
     private void gerarCodigo() {
         this.contador++;
-        this.codigoP = contador;
+        this.codigo = contador;
     }
     //metodos construtores
     
@@ -77,12 +77,12 @@ public class PlanoDeSaude {
         return contador;
     }
 
-    public Integer getCodigoP() {
-        return codigoP;
+    public Integer getCodigo() {
+        return codigo;
     }
 
-    public void setCodigoP(Integer codigoP) {
-        this.codigoP = codigoP;
+    public void setCodigoP(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public static int getContador() {
