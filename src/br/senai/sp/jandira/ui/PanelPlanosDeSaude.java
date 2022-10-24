@@ -1,13 +1,23 @@
 package br.senai.sp.jandira.ui;
 
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
+import br.senai.sp.jandira.model.OperacaoEnum;
 
 public class PanelPlanosDeSaude extends javax.swing.JPanel {
 
+    
+    int linha;
+    
     public PanelPlanosDeSaude() {
         initComponents();
         PlanoDeSaudeDAO.getTabelaPlanosDeSaude();
         preencherTabela();
+    }
+    
+    private int getLinha() {
+        linha = tablePlanosDeSaude.getSelectedRow();
+        return linha;
     }
 
 
@@ -77,13 +87,16 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
 
     private void buttonNovoPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoPlanoDeSaudeActionPerformed
 
-        PlanosDeSaudeDialog d = new PlanosDeSaudeDialog(null, true);
+        PlanosDeSaudeDialog d = new PlanosDeSaudeDialog(null, true, OperacaoEnum.ADICIONAR);
         d.setVisible(true);
         
+        preencherTabela();
     }//GEN-LAST:event_buttonNovoPlanoDeSaudeActionPerformed
 
     private void buttonEditarPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarPlanoDeSaudeActionPerformed
 
+        
+        
     }//GEN-LAST:event_buttonEditarPlanoDeSaudeActionPerformed
 
     private void buttonExcluirPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirPlanoDeSaudeActionPerformed

@@ -1,8 +1,6 @@
 package br.senai.sp.jandira.dao;
 
-import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.PlanoDeSaude;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
