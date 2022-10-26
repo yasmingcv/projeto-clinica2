@@ -4,6 +4,7 @@ import br.senai.sp.jandira.dao.PlanoDeSaudeDAO;
 import br.senai.sp.jandira.model.OperacaoEnum;
 import br.senai.sp.jandira.model.PlanoDeSaude;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 public class PanelPlanosDeSaude extends javax.swing.JPanel {
 
@@ -19,7 +20,12 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         linha = tablePlanosDeSaude.getSelectedRow();
         return linha;
     }
-
+    
+    private Integer getCodigo(){
+        String codigoStr = tablePlanosDeSaude.getValueAt(getLinha(), 0).toString();
+        Integer codigo = Integer.valueOf(codigoStr);
+        return codigo;
+    }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -99,11 +105,7 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         preencherTabela();
     }
         
-    private Integer getCodigo(){
-        String codigoStr = tablePlanosDeSaude.getValueAt(getLinha(), 0).toString();
-        Integer codigo = Integer.valueOf(codigoStr);
-        return codigo;
-    }
+    
     
     private void excluirPlanoDeSaude(){
         int resposta = JOptionPane.showConfirmDialog(
@@ -111,7 +113,7 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
                 "Tem certeza de que deseja excluir?", 
                 "ATENÇÃO!", 
                 JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.WARNING_MESSAGE);
         
         if(resposta == 0){
             PlanoDeSaudeDAO.excluir(getCodigo());
@@ -131,7 +133,7 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         if(getLinha() != -1){
             editarPlanoDeSaude();
         }else{
-            JOptionPane.showConfirmDialog(
+            JOptionPane.showMessageDialog(
                     null, 
                     "Por favor, selecione o plano de saúde que deseja editar.", 
                     "Planos de saúde", 
@@ -146,8 +148,8 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
         }else{
             JOptionPane.showMessageDialog(
                     this,
-                    "Por favor, selecione o plano de saúde que você deseja excluir.",
-                    "ATENÇÃO!",
+                    "Por favor, selecione o plano de saúde que deseja excluir.",
+                    "Planos de saúde",
                     JOptionPane.WARNING_MESSAGE);
         }
         
@@ -176,6 +178,7 @@ public class PanelPlanosDeSaude extends javax.swing.JPanel {
 
         //Bloquear a edição das células da tabela
         tablePlanosDeSaude.setDefaultEditor(Object.class, null);
+        
     }
 
 }

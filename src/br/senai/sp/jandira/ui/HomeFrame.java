@@ -5,6 +5,7 @@
 package br.senai.sp.jandira.ui;
 
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
@@ -218,6 +219,7 @@ public class HomeFrame extends javax.swing.JFrame {
         panelHome.setVisible(false);
         panelEspecialidades.setVisible(false);
         panelPlanosDeSaude.setVisible(true);
+        
     }//GEN-LAST:event_buttonPlanoDeSaudeActionPerformed
 
     private void buttonAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgendaActionPerformed
@@ -236,6 +238,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
+      
 
     }//GEN-LAST:event_buttonEspecialidadesActionPerformed
 

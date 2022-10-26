@@ -1,6 +1,9 @@
 package br.senai.sp.jandira.model;
 
+import br.senai.sp.jandira.ui.PlanosDeSaudeDialog;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 public class PlanoDeSaude {
 
@@ -9,23 +12,21 @@ public class PlanoDeSaude {
     private String categoria;
     private String numero;
     private LocalDate validade;
-    
+
     private static int contador = 99;
     private Integer codigo;
 
     //
-    
     private void gerarCodigo() {
         this.contador++;
         this.codigo = contador;
     }
     //metodos construtores
-    
+
     public PlanoDeSaude() { //DEFAULT
         gerarCodigo();
     }
-    
-    
+
     public PlanoDeSaude(String operadora) {
         this.operadora = operadora;
         gerarCodigo();
@@ -42,7 +43,9 @@ public class PlanoDeSaude {
 
     // metodos
     public void setOperadora(String operadora) {
+
         this.operadora = operadora;
+
     }
 
     public String getOperadora() {
@@ -50,7 +53,9 @@ public class PlanoDeSaude {
     }
 
     public void setCategoria(String categoria) {
+
         this.categoria = categoria;
+
     }
 
     public String getCategoria() {
@@ -58,7 +63,9 @@ public class PlanoDeSaude {
     }
 
     public void setNumero(String numero) {
+
         this.numero = numero;
+
     }
 
     public String getNumero() {
@@ -92,6 +99,5 @@ public class PlanoDeSaude {
     public static void setContador(int contador) {
         PlanoDeSaude.contador = contador;
     }
-    
-    
+
 }
