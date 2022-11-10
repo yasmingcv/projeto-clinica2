@@ -216,6 +216,8 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
+        buttonEspecialidades.setBackground(new Color(204,204,204));
+        buttonPlanoDeSaude.setBackground(new Color(153, 153, 153, 153));
         panelHome.setVisible(false);
         panelEspecialidades.setVisible(false);
         panelPlanosDeSaude.setVisible(true);
@@ -235,7 +237,8 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMedicoActionPerformed
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
-
+        buttonEspecialidades.setBackground(new Color(153,153,153));
+        buttonPlanoDeSaude.setBackground(new Color(204,204,204,204));
         panelEspecialidades.setVisible(true);
         panelHome.setVisible(false);
       

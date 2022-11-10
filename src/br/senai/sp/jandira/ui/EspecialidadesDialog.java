@@ -9,12 +9,11 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
 
     private Especialidade especialidade;
     private OperacaoEnum operacao;
- 
+
     public EspecialidadesDialog( //criar nova especialidade 
             java.awt.Frame parent,
             boolean modal,
-            OperacaoEnum operacao) 
-    {
+            OperacaoEnum operacao) {
         super(parent, modal);
         initComponents();
         this.operacao = operacao;
@@ -38,9 +37,8 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
         preencherTitulo();
 
     }
-    
-    //
 
+    //
     private void preencherFormulario() {
 
         textFieldCodigo.setText(especialidade.getCodigo().toString());
@@ -163,12 +161,21 @@ public class EspecialidadesDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-
-        if (operacao == OperacaoEnum.ADICIONAR) {
-            adicionar();
+        if (textFieldNomeDaEspecialidade.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo 'Nome' não pode estar vazio.");
+            textFieldNomeDaEspecialidade.grabFocus();
+        } else if (textFieldDescricaoDaEspecialidade.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "O campo 'Descrição não pode estar vazio.'");
+            textFieldDescricaoDaEspecialidade.grabFocus();
         } else {
-            editar();
+            if (operacao == OperacaoEnum.ADICIONAR) {
+                adicionar();
+            } else {
+                editar();
+            }
         }
+
+
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     private void editar() {
