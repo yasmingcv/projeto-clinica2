@@ -248,11 +248,15 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
     }
 
     private void editar() {
+        
+        
 
         planoDeSaude.setOperadora(textFieldOperadora.getText());
         planoDeSaude.setCategoria(textFieldCategoria.getText());
         planoDeSaude.setNumero(textFieldNumero.getText());
-        planoDeSaude.setValidade(LocalDate.parse(textFieldValidade.getText()));
+        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        planoDeSaude.setValidade(LocalDate.parse(textFieldValidade.getText(), formato));
 
         PlanoDeSaudeDAO.atualizar(planoDeSaude);
 
