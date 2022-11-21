@@ -22,6 +22,7 @@ public class HomeFrame extends javax.swing.JFrame {
     //Atributos da classe:
     PanelEspecialidades panelEspecialidades;
     PanelPlanosDeSaude panelPlanosDeSaude;
+    PanelMedicos panelMedicos;
 
     //Constantes:
     private final int POS_X = 30;
@@ -210,9 +211,12 @@ public class HomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
+
         panelEspecialidades.setVisible(false);
         panelPlanosDeSaude.setVisible(false);
         panelHome.setVisible(true);
+        buttonEspecialidades.setBackground(new Color(204,204,204));
+        buttonPlanoDeSaude.setBackground(new Color(204,204,204));
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void buttonPlanoDeSaudeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlanoDeSaudeActionPerformed
@@ -233,7 +237,10 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPacienteActionPerformed
 
     private void buttonMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMedicoActionPerformed
-        // TODO add your handling code here:
+        panelEspecialidades.setVisible(false);
+        panelPlanosDeSaude.setVisible(false);
+        panelHome.setVisible(false);
+        panelMedicos.setVisible(true);
     }//GEN-LAST:event_buttonMedicoActionPerformed
 
     private void buttonEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEspecialidadesActionPerformed
@@ -300,7 +307,18 @@ public class HomeFrame extends javax.swing.JFrame {
         
         getContentPane().add(panelPlanosDeSaude);
         panelPlanosDeSaude.setVisible(false);
-                
+        
+        //
+        
+        panelMedicos = new PanelMedicos();
+        panelMedicos.setBounds(
+                POS_X, 
+                POS_Y, 
+                LARGURA, 
+                ALTURA);
+        
+        getContentPane().add(panelMedicos);
+        panelMedicos.setVisible(false);
     }
 
 }
