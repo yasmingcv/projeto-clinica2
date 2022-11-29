@@ -1,12 +1,17 @@
 package br.senai.sp.jandira.model;
 
-public class Medico {
+import java.time.LocalDate;
 
+public class Medico {
+    
+    
+    private String crm;
     private String nome;
-    private Especialidade[] especialidades;
     private String telefone;
     private String email;
-    private String crm;
+    private LocalDate dataNascimento;
+    private Especialidade[] especialidades;
+   
 
     private static int contador = 99;
     private Integer codigo;
@@ -22,15 +27,17 @@ public class Medico {
     }
 
     public Medico(
+            String crm,
             String nome,           
             String telefone,
             String email,
-            String crm,
+            LocalDate dataNascimento,
             Especialidade[] especialidades) {
 
         
         this.nome = nome;
         this.especialidades = especialidades;
+        this.dataNascimento = dataNascimento;
         this.telefone = telefone;
         this.email = email;
         this.crm = crm;
@@ -40,11 +47,13 @@ public class Medico {
     }
 
     public Medico(
+            Integer codigo,
+            String crm,
             String nome,           
             String telefone,
             String email,
-            String crm,
-            Integer codigo,
+            LocalDate dataNascimento,
+            
             Especialidade[] especialidades) {
         
         this.nome = nome;
@@ -129,7 +138,17 @@ public class Medico {
         Medico.contador = contador;
     }
 
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+    
+    
+
     public String getMedicoSeparadoPorPontoEVirgula(){
-        return this.codigo + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" + this.crm + ";" + this.especialidades;
+        return this.codigo + ";" + this.crm + ";" + this.nome + ";" + this.telefone + ";" + this.email + ";" + this.dataNascimento;
     }
 }

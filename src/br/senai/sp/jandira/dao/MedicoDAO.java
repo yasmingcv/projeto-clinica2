@@ -145,6 +145,7 @@ public class MedicoDAO {
             dados[i][1] = m.getCrm();
             dados[i][2] = m.getNome();
             dados[i][3] = m.getTelefone();
+            
         }
         return new DefaultTableModel(dados, titulo);
     }

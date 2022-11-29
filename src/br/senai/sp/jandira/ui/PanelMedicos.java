@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.ui;
 
 import br.senai.sp.jandira.dao.MedicoDAO;
+import br.senai.sp.jandira.model.OperacaoEnum;
 
 public class PanelMedicos extends javax.swing.JPanel {
 
@@ -33,7 +34,7 @@ public class PanelMedicos extends javax.swing.JPanel {
 
         buttonNovoMedico.setBackground(new java.awt.Color(153, 255, 153));
         buttonNovoMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/plus32.png"))); // NOI18N
-        buttonNovoMedico.setToolTipText("Novo plano de saúde");
+        buttonNovoMedico.setToolTipText("Novo médico");
         buttonNovoMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonNovoMedicoActionPerformed(evt);
@@ -44,7 +45,7 @@ public class PanelMedicos extends javax.swing.JPanel {
 
         buttonEditarMedico.setBackground(new java.awt.Color(51, 204, 255));
         buttonEditarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/edit32.png"))); // NOI18N
-        buttonEditarMedico.setToolTipText("Editar plano de saúde");
+        buttonEditarMedico.setToolTipText("Editar médico");
         buttonEditarMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEditarMedicoActionPerformed(evt);
@@ -55,7 +56,7 @@ public class PanelMedicos extends javax.swing.JPanel {
 
         buttonExcluirMedico.setBackground(new java.awt.Color(255, 102, 102));
         buttonExcluirMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/senai/sp/jandira/imagens/delete32.png"))); // NOI18N
-        buttonExcluirMedico.setToolTipText("Excluir plano de saúde");
+        buttonExcluirMedico.setToolTipText("Excluir médico");
         buttonExcluirMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExcluirMedicoActionPerformed(evt);
@@ -85,12 +86,14 @@ public class PanelMedicos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonNovoMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoMedicoActionPerformed
-
+        MedicosDialog m = new MedicosDialog(null, true, OperacaoEnum.ADICIONAR);
+        m.setVisible(true);
         
     }//GEN-LAST:event_buttonNovoMedicoActionPerformed
 
     private void buttonEditarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarMedicoActionPerformed
-        
+        MedicosDialog m = new MedicosDialog(null, true, OperacaoEnum.EDITAR);
+        m.setVisible(true);
     }//GEN-LAST:event_buttonEditarMedicoActionPerformed
 
     private void buttonExcluirMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirMedicoActionPerformed
