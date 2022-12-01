@@ -52,16 +52,17 @@ public class Medico {
             String nome,           
             String telefone,
             String email,
-            LocalDate dataNascimento,
+            LocalDate dataNascimento
             
-            Especialidade[] especialidades) {
+            ) {
         
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.crm = crm;
         this.codigo = codigo;
-        this.especialidades = especialidades;
+        
+        this.dataNascimento = dataNascimento;
 
         gerarCodigo();
     }
@@ -70,7 +71,8 @@ public class Medico {
             Integer codigo,
             String crm,
             String nome,
-            String telefone){
+            String telefone
+             ){
         
         this.codigo = codigo;
         this.crm = crm;

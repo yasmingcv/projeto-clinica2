@@ -33,6 +33,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         initComponents();
         this.operacao = operacao;
         this.medico = medico;
+        preencherFormulario();
         preencherTitulo();
     }
 
@@ -46,6 +47,17 @@ public class MedicosDialog extends javax.swing.JDialog {
         }
 
     }
+    
+    private void preencherFormulario(){
+        textFieldCodigo.setText(medico.getCodigo().toString());
+        textFieldCrm.setText(medico.getCrm());
+        textFieldEmail.setText(medico.getEmail());
+        textFieldNome.setText(medico.getNome());
+        textFieldTelefone.setText(medico.getTelefone());
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        textFieldDataNascimento.setText(medico.getDataNascimento().format(formato));
+    }
+            
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -109,7 +121,6 @@ public class MedicosDialog extends javax.swing.JDialog {
 
         labelCrm.setText("CRM:");
 
-        textFieldCrm.setText(" ");
         textFieldCrm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldCrmActionPerformed(evt);
@@ -118,7 +129,6 @@ public class MedicosDialog extends javax.swing.JDialog {
 
         labelNome.setText("Nome do (a) médico (a):");
 
-        textFieldNome.setText(" ");
         textFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldNomeActionPerformed(evt);
@@ -127,7 +137,6 @@ public class MedicosDialog extends javax.swing.JDialog {
 
         labelTelefone.setText("Telefone:");
 
-        textFieldTelefone.setText(" ");
         textFieldTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldTelefoneActionPerformed(evt);
@@ -136,7 +145,6 @@ public class MedicosDialog extends javax.swing.JDialog {
 
         labelEmail.setText("E mail:");
 
-        textFieldEmail.setText(" ");
         textFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldEmailActionPerformed(evt);
@@ -364,6 +372,7 @@ public class MedicosDialog extends javax.swing.JDialog {
             textFieldEmail.grabFocus();
         } else if (textFieldDataNascimento.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo data de nascimento não pode estar vazio.");
+            textFieldDataNascimento.grabFocus();
         } else {
             if (operacao == OperacaoEnum.ADICIONAR) {
                 adicionar();
@@ -373,7 +382,6 @@ public class MedicosDialog extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_buttonSalvarActionPerformed
-
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
@@ -401,7 +409,28 @@ public class MedicosDialog extends javax.swing.JDialog {
     }
 
     private void editar() {
+        
+        
+        
+        medico.setCrm(textFieldCrm.getText());
+        medico.setNome(textFieldNome.getText());
+        medico.setEmail(textFieldEmail.getText());
+        medico.setTelefone(textFieldTelefone.getText());
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        medico.setDataNascimento(LocalDate.parse(textFieldDataNascimento.getText(), formato));
+        
+        MedicoDAO.atualizar(medico);
+        
+        JOptionPane.showMessageDialog(
+                this,
+                "Médico atualizado com sucesso!",
+                "Editar médico",
+                JOptionPane.INFORMATION_MESSAGE);
 
+        dispose();
+        
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -27,6 +27,7 @@ public class PlanosDeSaudeDialog extends javax.swing.JDialog {
             boolean modal,
             PlanoDeSaude plano,
             OperacaoEnum operacao) {
+        
         super(parent, modal);
         initComponents();
         this.operacao = operacao;

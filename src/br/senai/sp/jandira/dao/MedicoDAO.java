@@ -1,6 +1,5 @@
 package br.senai.sp.jandira.dao;
 
-import br.senai.sp.jandira.model.Especialidade;
 import br.senai.sp.jandira.model.Medico;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -47,7 +48,7 @@ public class MedicoDAO {
 
     public static Medico getMedico(Integer codigo) { //READ
         for (Medico m : medicos) {
-            if (m.getCodigo().equals(codigo)) {
+            if (m.getCodigo().equals(codigo)) {                    
                 return m;
             }
         }
@@ -110,15 +111,24 @@ public class MedicoDAO {
         try {
             BufferedReader leitor = Files.newBufferedReader(PATH);
             String linha = leitor.readLine();
+            
 
             while (linha != null) {
+                
                 String[] vetor = linha.split(";");
+                String[] dataNascimento = vetor[5].split("-");
+                
+                Integer ano = Integer.parseInt(dataNascimento[0]);
+                Integer mes = Integer.parseInt(dataNascimento[1]);
+                Integer dia = Integer.parseInt(dataNascimento[2]);
 
                 Medico m = new Medico(
                         Integer.valueOf(vetor[0]),
                         vetor[1],
                         vetor[2],
-                        vetor[3]);
+                        vetor[3],
+                        vetor[4],
+                        LocalDate.of(ano, mes, dia));
                 
                 medicos.add(m);
                 
