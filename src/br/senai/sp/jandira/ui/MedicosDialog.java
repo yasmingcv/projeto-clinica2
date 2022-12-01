@@ -145,7 +145,6 @@ public class MedicosDialog extends javax.swing.JDialog {
 
         labelDataNascimento.setText("Data de nascimento:");
 
-        textFieldDataNascimento.setText(" ");
         textFieldDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldDataNascimentoActionPerformed(evt);
@@ -357,16 +356,16 @@ public class MedicosDialog extends javax.swing.JDialog {
         } else if (textFieldNome.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo nome não pode estar vazio.");
             textFieldNome.grabFocus();
-        } else if (textFieldTelefone.getText().isEmpty()){
+        } else if (textFieldTelefone.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo telefone não pode estar vazio.");
             textFieldTelefone.grabFocus();
-        } else if (textFieldEmail.getText().isEmpty()){
+        } else if (textFieldEmail.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo email não pode estar vazio.");
             textFieldEmail.grabFocus();
-        } else if(textFieldDataNascimento.getText().isEmpty()){
+        } else if (textFieldDataNascimento.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "O campo data de nascimento não pode estar vazio.");
         } else {
-            if (operacao == OperacaoEnum.ADICIONAR){
+            if (operacao == OperacaoEnum.ADICIONAR) {
                 adicionar();
             } else {
                 editar();
@@ -392,7 +391,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         MedicoDAO.gravar(novoMedico);
 
         JOptionPane.showMessageDialog(
-                this,
+                null,
                 "Médico gravado com sucesso!",
                 "Médicos",
                 JOptionPane.INFORMATION_MESSAGE);
@@ -401,9 +400,8 @@ public class MedicosDialog extends javax.swing.JDialog {
 
     }
 
-    
-    private void editar(){
-        
+    private void editar() {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
