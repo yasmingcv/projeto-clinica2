@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.ui;
 
+import br.senai.sp.jandira.dao.EspecialidadeDAO;
 import br.senai.sp.jandira.dao.MedicoDAO;
 import br.senai.sp.jandira.model.Medico;
 import br.senai.sp.jandira.model.OperacaoEnum;
@@ -21,6 +22,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         initComponents();
         this.operacao = operacao;
         preencherTitulo();
+        addList();
     }
 
     public MedicosDialog( //editar
@@ -35,6 +37,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         this.medico = medico;
         preencherFormulario();
         preencherTitulo();
+        addList();
     }
 
     private void preencherTitulo() {
@@ -81,7 +84,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         labelListaEspecialidades = new javax.swing.JLabel();
         labelEspecialidadesMedico = new javax.swing.JLabel();
         listEspecialidades = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listEspe = new javax.swing.JList<>();
         listEspecialidadesDoMedico = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         buttonAdicionarEspecialidade = new javax.swing.JButton();
@@ -163,12 +166,12 @@ public class MedicosDialog extends javax.swing.JDialog {
 
         labelEspecialidadesMedico.setText("Especialidades do médico:");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listEspe.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        listEspecialidades.setViewportView(jList1);
+        listEspecialidades.setViewportView(listEspe);
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -438,7 +441,6 @@ public class MedicosDialog extends javax.swing.JDialog {
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonRemoverEspecialidade;
     private javax.swing.JButton buttonSalvar;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -451,6 +453,7 @@ public class MedicosDialog extends javax.swing.JDialog {
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelTItulo;
     private javax.swing.JLabel labelTelefone;
+    private javax.swing.JList<String> listEspe;
     private javax.swing.JScrollPane listEspecialidades;
     private javax.swing.JScrollPane listEspecialidadesDoMedico;
     private javax.swing.JTextField textFieldCodigo;
@@ -460,4 +463,9 @@ public class MedicosDialog extends javax.swing.JDialog {
     private javax.swing.JTextField textFieldNome;
     private javax.swing.JTextField textFieldTelefone;
     // End of variables declaration//GEN-END:variables
+
+    private void addList(){
+        listEspe.setModel(EspecialidadeDAO.getListaEspecialidades());
+    }
+
 }
