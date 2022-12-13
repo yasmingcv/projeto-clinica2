@@ -86,7 +86,7 @@ public class MedicosDialog extends javax.swing.JDialog {
         listEspecialidades = new javax.swing.JScrollPane();
         listEspe = new javax.swing.JList<>();
         listEspecialidadesDoMedico = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listEspMedico = new javax.swing.JList<>();
         buttonAdicionarEspecialidade = new javax.swing.JButton();
         buttonRemoverEspecialidade = new javax.swing.JButton();
         buttonSalvar = new javax.swing.JButton();
@@ -173,12 +173,12 @@ public class MedicosDialog extends javax.swing.JDialog {
         });
         listEspecialidades.setViewportView(listEspe);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        listEspMedico.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        listEspecialidadesDoMedico.setViewportView(jList2);
+        listEspecialidadesDoMedico.setViewportView(listEspMedico);
 
         buttonAdicionarEspecialidade.setBackground(new java.awt.Color(0, 204, 102));
         buttonAdicionarEspecialidade.setForeground(new java.awt.Color(204, 255, 204));
@@ -353,7 +353,11 @@ public class MedicosDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_textFieldDataNascimentoActionPerformed
 
     private void buttonAdicionarEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarEspecialidadeActionPerformed
-        // TODO add your handling code here:
+
+        String linhaSelecionada = listEspe.getSelectedValue();
+        
+        
+        
     }//GEN-LAST:event_buttonAdicionarEspecialidadeActionPerformed
 
     private void buttonRemoverEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoverEspecialidadeActionPerformed
@@ -441,7 +445,6 @@ public class MedicosDialog extends javax.swing.JDialog {
     private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton buttonRemoverEspecialidade;
     private javax.swing.JButton buttonSalvar;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel labelCodigo;
@@ -453,6 +456,7 @@ public class MedicosDialog extends javax.swing.JDialog {
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelTItulo;
     private javax.swing.JLabel labelTelefone;
+    private javax.swing.JList<String> listEspMedico;
     private javax.swing.JList<String> listEspe;
     private javax.swing.JScrollPane listEspecialidades;
     private javax.swing.JScrollPane listEspecialidadesDoMedico;
@@ -468,4 +472,9 @@ public class MedicosDialog extends javax.swing.JDialog {
         listEspe.setModel(EspecialidadeDAO.getListaEspecialidades());
     }
 
+    
+    //private void adicionarEspecialidade(){
+        
+        
+    //}
 }

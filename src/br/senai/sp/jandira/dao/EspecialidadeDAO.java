@@ -22,6 +22,7 @@ public class EspecialidadeDAO {
     private final static String URL_TEMP = "C:\\Users\\22282215\\java\\especialidade-temp.txt";
     private final static Path PATH = Paths.get(URL);
     private final static Path PATH_TEMP = Paths.get(URL_TEMP);
+    public static DefaultListModel<String> listaEspecialidades = new DefaultListModel<>();
 
     private static ArrayList<Especialidade> especialidades = new ArrayList<>();
 
@@ -171,7 +172,6 @@ public class EspecialidadeDAO {
     
     
     public static DefaultListModel<String> getListaEspecialidades(){
-        DefaultListModel<String> listaEspecialidades = new DefaultListModel<>();
         
         for(Especialidade especialidade : especialidades){
             listaEspecialidades.addElement(especialidade.getCodigo() + " - " + especialidade.getNome());
@@ -180,6 +180,17 @@ public class EspecialidadeDAO {
         return listaEspecialidades;
     }
     
-    
+    public static void adicionarEspecialidadeNaLista(Integer codigo){
+        
+        ArrayList<Especialidade> especialidadesDoMedico = new ArrayList<>();
+        
+        for(Especialidade e : especialidades){
+            if(e.getCodigo().equals(codigo)){
+                especialidadesDoMedico.add(e);
+                break;
+            }
+        }
+        
+    }
 
 }

@@ -159,4 +159,6 @@ public class MedicoDAO {
         }
         return new DefaultTableModel(dados, titulo);
     }
+    
+    
 }
